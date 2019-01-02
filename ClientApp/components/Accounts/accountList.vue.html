@@ -1,0 +1,27 @@
+<template>
+    <div>
+        <h1>Accounts Management</h1>
+
+        <!--<button id="show-modal" @click="showModal = true">Add New Account</button>
+        <modal v-if="showModal" @close="showModal = false">-->
+
+        <table v-if="accountlist.length" class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Commenced</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="account in accountlist">
+                    <td>{{ account.name }}</td>
+                    <td>{{ account.commenced }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p v-else><em>Loading...</em></p>
+    </div>
+</template>
+
+<script src="./accountList.ts"></script>
