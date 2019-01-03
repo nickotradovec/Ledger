@@ -8,14 +8,18 @@
         <table v-if="accountlist.length" class="table">
             <thead>
                 <tr>
+                    <th>ID</th>
                     <th>Name</th>
                     <th>Commenced</th>
+                    <th>Ceased</th>
                 </tr>
             </thead>
             <tbody>
                 <tr v-for="account in accountlist">
-                    <td>{{ account.name }}</td>
-                    <td>{{ account.commenced }}</td>
+                    <td>{{ account.accountId }}</td>
+                    <td>{{ account.accountName }}</td>
+                    <td><time>{{ account.commence_Formatted }}</time></td>
+                    <td><time>{{ account.cease_Formatted }}</time></td>
                 </tr>
             </tbody>
         </table>

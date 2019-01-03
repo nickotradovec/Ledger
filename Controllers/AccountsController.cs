@@ -2,11 +2,8 @@ using System;
 using System.Data;
 using System.Data.Common;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using MySql.Data.MySqlClient;
-using Newtonsoft.Json;
 using AppDatabase;
 using Ledger.DataObjects;
 
@@ -23,6 +20,8 @@ namespace Ledger.Controllers
                 await db.Connection.OpenAsync();
                 var query = new AccountQuery(db);
                 var result = await query.GetAllAccounts();
+                //var sdf = new List<Account>();
+                //sdf = result;
                 return new OkObjectResult(result);
             }
         }

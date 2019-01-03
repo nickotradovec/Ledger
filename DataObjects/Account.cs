@@ -16,11 +16,31 @@ namespace Ledger.DataObjects {
         public DateTime Cease { get; set; }
         public string AccountName { get; set;}
 
+        // TODO: Data formatting should not be contained here.
+        // Consider a script to reformat at the end or how to do it at hte control level
+        public string Commence_Formatted
+        { 
+            get { return Commence.ToString("dd-MMM-yyyy"); }            
+        }
+
+        public string Cease_Formatted
+        { 
+            get 
+            { 
+                if (Cease >= new DateTime(9999,12,31)) {
+                    return "";
+                } else {
+                    return Cease.ToString("dd-MMM-yyyy"); 
+                }            
+            }            
+        }
+        
         public Boolean IsValid (DateTime dtmCheck) {
             return (dtmCheck >= Commence && dtmCheck <= Cease);
         }
 
-        public AppDb Db { get; set; }
+        [JsonIgnore]
+        private AppDb Db { get; set; }
         public Account (AppDb db = null) {
             Db = db;
         }

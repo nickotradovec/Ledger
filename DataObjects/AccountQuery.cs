@@ -13,7 +13,7 @@ namespace Ledger.DataObjects
 {
     public class AccountQuery
     {
-        public readonly AppDb Db;
+        private readonly AppDb Db;
         public AccountQuery(AppDb db)
         {
             Db = db;
@@ -36,7 +36,10 @@ namespace Ledger.DataObjects
                     var post = new Account(Db)
                     {
                         AccountId = await reader.GetFieldValueAsync<int>(0),
-                        AccountName = await reader.GetFieldValueAsync<string>(3)
+                        AccountName = await reader.GetFieldValueAsync<string>(3),
+                        Commence = await reader.GetFieldValueAsync<DateTime>(1),
+                        Cease = await reader.GetFieldValueAsync<DateTime>(2),
+                        InitialAccountBalance = await reader.GetFieldValueAsync<decimal>(4)
                     };
                     accounts.Add(post);
                 }
